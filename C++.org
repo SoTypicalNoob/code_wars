@@ -83,3 +83,61 @@ int main () {
 
 #+RESULTS:
 : 0
+** Count characters in your string
+The main idea is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+What if the string is empty? Then the result should be empty object literal, {}.
+#+begin_src cpp
+#include <iostream>
+#include <vector>
+#include <algorithm> // because of std::find
+#include <set>
+#include <map>
+#include <string>
+
+std::map<char, unsigned> count(const std::string& string) {
+    std::set<char> set_of_string(string.begin(), string.end());
+    std::vector<char> vct_of_string(string.begin(), string.end());
+    std::map<char, unsigned> cmap{};
+    for (char item : set_of_string) {
+        cmap.insert({item, std::count(vct_of_string.begin(), vct_of_string.end(), item)});
+    }
+    return cmap;
+}
+
+int main () {
+    std::string string = "aba";
+    count(string);
+    for (const auto &elem : count(string)) {
+      std::cout << elem.first << " " << elem.second;
+      }
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: a 2b 1
+*** Good solutions from other codewarriors
+#+begin_src cpp
+#include <map>
+#include <string>
+#include <iostream>
+
+std::map<char, unsigned> count(const std::string& string) {
+  std::map<char, unsigned> r;
+  for (const char& c: string) ++r[c];
+  return r;
+}
+
+
+int main () {
+    std::string string = "aba";
+    count(string);
+    for (const auto &elem : count(string)) {
+      std::cout << elem.first << " " << elem.second;
+      }
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: a 2b 1
