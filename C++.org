@@ -47,3 +47,39 @@ int main () {
 
 #+RESULTS:
 : zazazbza
+** Find the odd int
+Given an array of integers, find the one that appears an odd number of times.
+There will always be only one integer that appears an odd number of times.
+Examples
+[7] should return 7, because it occurs 1 time (which is odd).
+[0] should return 0, because it occurs 1 time (which is odd).
+[1,1,2] should return 2, because it occurs 1 time (which is odd).
+[0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
+
+#+begin_src cpp
+#include <iostream>
+#include <vector>
+#include <algorithm> // because of std::find
+#include <set>
+
+int findOdd(const std::vector<int>& numbers){
+    std::set<int> set_of_numbers(numbers.begin(), numbers.end());
+    for (int item : set_of_numbers) {
+        if (std::count(numbers.begin(), numbers.end(), item) % 2 != 0) {
+            return item;
+        }
+    }
+    return 0;
+}
+
+int main () {
+    std::vector<int> numbers{0,1,0,1,0};
+    std::cout << findOdd(numbers) << "\n";
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: 0
