@@ -194,3 +194,94 @@ int main () {
 
 #+RESULTS:
 : 1306 1676 2427
+** Convert string to camel case
+Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case). The next words should be always capitalized.
+
+Examples
+"the-stealth-warrior" gets converted to "theStealthWarrior"
+"The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+#+begin_src cpp
+#include <cstddef>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+
+void tokenize(std::string const &str, const char delim,
+            std::vector<std::string> &out)
+{
+    // construct a stream from the string
+    std::stringstream ss(str);
+
+    std::string s;
+    while (std::getline(ss, s, delim)) {
+        out.push_back(s);
+    }
+}
+std::string to_camel_case(std::string text) {
+    if (text.size() < 1) {return text;}
+    const char delimU = '_';
+    const char delimD = '-';
+    std::vector<std::string> vct_out{};
+    size_t pos;
+
+    while ((pos = text.find("_")) != std::string::npos) {
+        text.replace(pos, 1, "-");
+    }
+    if (text.find(delimU) != std::string::npos) {
+      tokenize(text, delimU, vct_out);
+    }
+    else if (text.find(delimD) != std::string::npos) {
+      tokenize(text, delimD, vct_out);
+    }
+
+    std::string str_out = vct_out[0];
+    std::string tmpStr = "";
+    for (unsigned int i=1; i < vct_out.size(); i++) {
+        tmpStr = vct_out[i];
+        tmpStr[0] = std::toupper(tmpStr[0]);
+        str_out.append(tmpStr);
+    }
+
+  return str_out;
+}
+
+int main () {
+    std::string text = "The-Pippi_Was-pippi";
+    std::cout << to_camel_case(text) << "\n";
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: ThePippiWasPippi
+
+*** Good solutions from other codewarriors
+#+begin_src cpp
+#include <string>
+#include <iostream>
+
+std::string to_camel_case(std::string text)
+{
+  for(int i = 0; i < text.size(); ++i)
+  {
+    if(text[i] == '-' || text[i] == '_')
+    {
+      text.erase(i,1);
+      text[i] = toupper(text[i]);
+    }
+  }
+  return text;
+}
+
+int main () {
+    std::string text = "The-Pippi_Was-pippi";
+    std::cout << to_camel_case(text) << "\n";
+
+    return 0;
+}
+#+end_src
+
+#+RESULTS:
+: ThePippiWasPippi
