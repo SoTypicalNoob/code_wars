@@ -357,3 +357,43 @@ int main () {
 
 #+RESULTS:
 : 1
+** Find The Parity Outlier
+You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
+
+Examples
+[2, 4, 0, 100, 4, 11, 2602, 36]
+Should return: 11 (the only odd number)
+
+[160, 3, 1719, 19, 11, 13, -21]
+Should return: 160 (the only even number)
+
+* 8 Kyu
+** String repeat
+Write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+Examples (input -> output)
+6, "I"     -> "IIIIII"
+5, "Hello" -> "HelloHelloHelloHelloHello"
+#+begin_src Rust
+fn main() {
+  let src: &str = "this";
+  let count: usize = 3;
+
+  let output: String = repeat_str(src, count);
+  println!("output: {output}")
+
+}
+
+fn repeat_str(src: &str, count: usize) -> String {
+   let mut result_string: String = "".to_string();
+   for number in (0..count) {
+   result_string = result_string + &src.to_string();
+   }
+   result_string
+}
+#+end_src
+*** Other useful solutions:
+#+begin_src Rust
+fn repeat_str(src: &str, count: usize) -> String {
+  src.repeat(count)
+}
+#+end_src
