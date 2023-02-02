@@ -4,25 +4,28 @@ fn main() {
     println!("Say something nice! （＾ω＾）")
 }
 
-#[doc = r#"**Sum of Cubes**
+fn string_ends_with(word: &str, ending: &str) -> bool {
+    word.ends_with(ending)
+}
+#[test]
+fn test_string_ends_with() {
+    assert_eq!(string_ends_with("abc", "bc"), true);
+    assert_eq!(string_ends_with("abc", "d"), false)
+}
 
-Write a function that takes a positive integer n, sums all the cubed values from 1 to n (inclusive), and returns that sum.
-
-
-Assume that the input n will always be a positive integer.
-
-
-
-I misundertsood the task, but it worked anyway. :-(
-
-
-My solution: (1..=n).fold(0, | sum, x | sum + x).pow(2)
-
-
-Stola' with pride: (1..=n).map(| x | x.pow(3)).sum()
-
-
-<https://www.codewars.com/kata/59a8570b570190d313000037/train/rust>"#]
+/// **Sum of Cubes**
+///
+/// Write a function that takes a positive integer n, sums all the cubed values from 1 to n (inclusive), and returns that sum.
+///
+/// Assume that the input n will always be a positive integer.
+///
+/// I misundertsood the task, but it worked anyway. :-(
+///
+/// My solution: (1..=n).fold(0, | sum, x | sum + x).pow(2)
+///
+/// Stola' with pride: (1..=n).map(| x | x.pow(3)).sum()
+///
+/// <https://www.codewars.com/kata/59a8570b570190d313000037/train/rust>"
 fn sum_cubes(n: u32) -> u32 {
     (1..=n).map(| x | x.pow(3)).sum()
 }
