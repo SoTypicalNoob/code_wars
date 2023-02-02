@@ -1,38 +1,29 @@
 #![allow(dead_code, unused_imports)]
 
 fn main() {
-    dbg!(simple_multiplication(10));
+    println!("Say something nice! （＾ω＾）")
 }
 
-/// **Even or Odd**
-///
-/// Create a function that takes an integer as an argument and returns
-/// "Even" for even numbers or "Odd" for odd numbers.
-///
-/// <https://www.codewars.com/kata/53da3dbb4a5168369a0000fe>
-fn even_or_odd(i: i32) -> &'static str {
-    if i % 2 == 0 { "Even" }
-    else { "Odd" }
-}
-#[test]
-fn test_even_or_odd() {
-    assert_eq!(even_or_odd(12), "Even");
-    assert_eq!(even_or_odd(13), "Odd");
-}
-/// **Sum of Cubes**
-///
-/// Write a function that takes a positive integer n, sums all the cubed values from 1 to n (inclusive), and returns that sum.
-///
-/// Assume that the input n will always be a positive integer.
-///
-/// <https://www.codewars.com/kata/59a8570b570190d313000037/train/rust>
+#[doc = r#"**Sum of Cubes**
+
+Write a function that takes a positive integer n, sums all the cubed values from 1 to n (inclusive), and returns that sum.
+
+
+Assume that the input n will always be a positive integer.
+
+
+
+I misundertsood the task, but it worked anyway. :-(
+
+
+My solution: (1..=n).fold(0, | sum, x | sum + x).pow(2)
+
+
+Stola' with pride: (1..=n).map(| x | x.pow(3)).sum()
+
+
+<https://www.codewars.com/kata/59a8570b570190d313000037/train/rust>"#]
 fn sum_cubes(n: u32) -> u32 {
-    //!
-    //! I misundertsood the task, but it worked anyway. :-(
-    //!
-    //! My solution: (1..=n).fold(0, | sum, x | sum + x).pow(2)
-    //!
-    //! Stola' with pride: (1..=n).map(| x | x.pow(3)).sum()
     (1..=n).map(| x | x.pow(3)).sum()
 }
 #[test]
