@@ -81,3 +81,51 @@ fn test_litres() {
     assert_eq!(litres(6.7), 3);
     assert_eq!(litres(11.8), 5);
 }
+
+/// **Convert a Number to a String!**
+/// We need a function that can transform a number (integer)
+/// into a string.
+///
+/// What ways of achieving this do you know?
+///
+/// <https://www.codewars.com/kata/5265326f5fda8eb1160004c8>
+fn number_to_string(n: i16) -> String {
+    n.to_string()
+}
+#[test]
+fn test_number_to_string() {
+    assert_eq!(number_to_string(123), "123");
+    assert_eq!(number_to_string(999), "999");
+    assert_eq!(number_to_string(-100), "-100");
+}
+
+/// **I love you, a little , a lot, passionately ... not at all**
+///
+/// Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
+///
+/// "I love you"
+/// "a little"
+/// "a lot"
+/// "passionately"
+/// "madly"
+/// "not at all"
+/// If there are more than 6 petals,
+/// you start over with "I love you" for 7 petals,
+/// "a little" for 8 petals and so on.
+///
+/// When the last petal was torn there were cries of excitement,
+/// dreams, surging thoughts and emotions.
+///
+/// Your goal in this kata is to determine which phrase
+/// the girls would say at the last petal for a flower
+/// of a given number of petals.
+/// The number of petals is always greater than 0.
+///
+/// <https://www.codewars.com/kata/57f24e6a18e9fad8eb000296/>
+fn how_much_i_love_you(nb_petals: u16) -> &'static str {
+    todo!()
+}
+#[test]
+fn test_how_much_i_love_you() {
+    assert_eq!(how_much_i_love_you(1), "t")
+}
